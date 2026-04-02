@@ -4,10 +4,10 @@ const valueArray = document.getElementById('numbers')
 const tbody = document.getElementsByClassName("tbody")[0];
 const saveButton = document.getElementById('save');
 const loadButton = document.getElementById('load');
-let opcoes = [...document.getElementsByClassName('row')]
+let opcoes = [...document.getElementsByClassName('square')]
 let cells = [...document.getElementsByClassName('cell')];
 
-
+// Cria matriz dinamica
 criarMatriz.addEventListener('click', () => {
     const numberArray = parseInt(valueArray.value)
     let HTML = ""
@@ -24,7 +24,7 @@ criarMatriz.addEventListener('click', () => {
 
 
 
-
+// Limpa toda a matriz
 botao[0].addEventListener('click', () => {
     cells.map((element) => {
         console.log(element)
@@ -32,29 +32,46 @@ botao[0].addEventListener('click', () => {
     })
 })
 
-
+// Funcao que atualiza a matriz adicionando os eventListeners
 function updateCells() {
     cells = [...document.getElementsByClassName('cell')];
     cells.map((element) => {
-        element.addEventListener('click', () => {
-            const elementId = element.getAttribute("id")
-            if (elementId === "clicked") {
-                element.setAttribute("id", "")
-            } else {
-                element.setAttribute("id", "clicked")
-            }
-            console.log(cells)
-        }
-        )
+        element.addEventListener('click', () => paint(element))
     })
 }
 
+
+
+
+//Pinta a matriz
+function paint(element, selectedColor) {
+    if(cor !== element.id){
+        cor ? element.setAttribute("id", cor) : element.setAttribute("id", "azul");
+        } else {
+            element.setAttribute("id", "")
+        }
+}
+
+
+
+let cor = ""
+//Seleciona a cor a ser utilizada para pintar a matriz
+opcoes.map((opcao) => {
+    opcao.addEventListener('click', () => {
+        const selectedColor = (opcao.id)
+        cor = selectedColor
+    })
+})
+
+
+// Salva matriz no local storage
 saveButton.addEventListener('click', () => saveArray())
 function saveArray() {
     localStorage.setItem("Previous-Array", tbody.innerHTML)
     console.log(tbody)
 }
 
+// carrega a matriz do local storage
 loadButton.addEventListener('click', () => loadArray())
 function loadArray() {
     const savedItem = localStorage.getItem("Previous-Array")
@@ -62,9 +79,3 @@ function loadArray() {
     updateCells(cells)
     console.log(cells)
 }
-
-opcoes.map((opcao) =>{
-    opcao.addEventListener('click',() => {
-        console.log(opcao.id)
-    })
-})

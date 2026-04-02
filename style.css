@@ -17,9 +17,9 @@ tbody{
     
 }
 
-#clicked {
+/* #clicked {
     background-color: black;
-}
+} */
 
 .row {
     display: flex;
