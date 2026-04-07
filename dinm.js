@@ -7,6 +7,9 @@ const loadButton = document.getElementById('load');
 let opcoes = [...document.getElementsByClassName('square')]
 let cells = [...document.getElementsByClassName('cell')];
 
+//Variavel global
+let COR = ""
+
 // Cria matriz dinamica
 criarMatriz.addEventListener('click', () => {
     const numberArray = parseInt(valueArray.value)
@@ -45,21 +48,21 @@ function updateCells() {
 
 //Pinta a matriz
 function paint(element, selectedColor) {
-    if(cor !== element.id){
-        cor ? element.setAttribute("id", cor) : element.setAttribute("id", "azul");
-        } else {
-            element.setAttribute("id", "")
-        }
+    console.log(COR !== element.id)
+    if (COR === element.id) {
+        COR ? element.setAttribute("id", COR) : element.setAttribute("id", "azul");
+    } else {
+        element.setAttribute("id", "")
+    }
 }
 
 
 
-let cor = ""
-//Seleciona a cor a ser utilizada para pintar a matriz
+//Seleciona a COR a ser utilizada para pintar a matriz
 opcoes.map((opcao) => {
     opcao.addEventListener('click', () => {
         const selectedColor = (opcao.id)
-        cor = selectedColor
+        COR = selectedColor
     })
 })
 
@@ -79,3 +82,18 @@ function loadArray() {
     updateCells(cells)
     console.log(cells)
 }
+
+
+function defaultArray(){
+    numberArray = valueArray.value = 3
+    let HTML = ""
+    for (let i = 0; i < numberArray; i++) {
+        HTML += "<div class='row'>"
+        for (let j = 0; j < numberArray; j++) {
+            HTML += `<div class="cell"></div>`
+        }
+        HTML += "</div>"
+    }
+    criarMatriz.click()
+}
+window.onload = defaultArray

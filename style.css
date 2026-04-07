@@ -1,53 +1,130 @@
 
-/* 
-tbody{
-    background-color: grey;
-    border: 5px;
-    border-color: black;
-} */
 
-.cell {
-    /* background-color: red; */
-    border: solid;
-    border-width: 2px;
-    border-color: black;
-    width: 50px;
-    height: 50px;
-    /* padding: 0px; */
-    
+body {
+    background: #1a1a2e;
+    font-family: Arial, sans-serif;
+    color: white;
+    padding: 20px;
 }
 
-/* #clicked {
-    background-color: black;
-} */
+.tbody {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto 30px;
+    padding: 30px;
+    background: #16213e;
+    border-radius: 15px;
+    border: 2px solid #0f3460;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.3);
+    overflow: auto;
+    max-height: 350px;
+    max-width: 100%;
+}
 
 .row {
     display: flex;
-    overflow-x: visible;
+    gap: 4px;
+    margin-bottom: 4px;
 }
 
-.square{
-    width: 30px;
-    height: 30px;
-    border: solid;
+.cell {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #0f3460;
+    border-radius: 5px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.2s;
 }
 
-#azul{
-    background-color: blue;
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    background: #16213e;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 0 auto;
 }
 
-#vermelho{
-    background-color:red
+
+.container-botao {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
 }
 
-#amarelo{
-    background-color:yellow
+.container-botao button {
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #0f3460;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
 }
 
-#verde{
-    background-color:green
+.colors-row {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    background: #0f3460;
+    border-radius: 8px;
 }
 
-#laranja{
-    background-color:orange
+.square {
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    border: 2px solid transparent;
+}
+
+#azul {
+    background: blue;
+}
+
+#vermelho {
+    background: red;
+}
+
+#amarelo {
+    background: yellow;
+}
+
+#verde {
+    background: green;
+}
+
+#laranja {
+    background: orange;
+}
+
+#title {
+    text-align: center;
+    color: white;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#numbers {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #e94560;
+    border-radius: 5px;
+    background: #0f3460;
+    color: white;
+    text-align: center;
+    width: 200px;
 }
